@@ -33,13 +33,30 @@ User.create(name: Faker::TvShows::Friends.unique.character)
 end 
 
 puts "creates exercise"
-25.times do
+10.times do
 Exercise.create({
-    name: Faker::Dessert.variety,
+    name: Faker::Dessert.unique.variety,
     directions: Faker::TvShows::MichaelScott.quote, 
     img_url: nil
     })
 end 
+
+10.times do
+    Exercise.create({
+        name: Faker::Dessert.unique.topping,
+        directions: Faker::TvShows::MichaelScott.quote, 
+        img_url: nil
+        })
+end 
+
+10.times do
+    Exercise.create({
+        name: Faker::Dessert.unique.flavor,
+        directions: Faker::TvShows::MichaelScott.quote, 
+        img_url: nil
+        })
+end 
+
 
 puts "creates routines"
 10.times do 
