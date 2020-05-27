@@ -1,4 +1,5 @@
 <h1><%= @routine.name %></h1>
+<p> Do on: <%= @routine.weekday %></p>
 
 <ul>
     <% @routine.exercises.each do |exercise| %>
@@ -7,3 +8,5 @@
 </ul>
 
 <p><%= link_to "Back to Routines", routines_path %></p>
+<p><%= link_to "Edit this Routine", edit_routine_path(@routine) %></p>
+<!-- <p><%= link_to "Add Exercises", edit_routine_split_path(@routine.splits.id) %></p> -->

@@ -1,0 +1,12 @@
+<%= form_for @routine do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+
+    <%= f.label :weekday %>
+    <%= f.collection_select :weekday, @weekdays, :to_s, :to_s, include_blank: false%>
+
+    <%= f.label :user_id%>
+    <%= f.collection_select :user_id, @users, :id, :name %>
+    
+    <%= f.submit %>
+<% end %>
