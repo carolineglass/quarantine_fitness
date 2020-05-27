@@ -21,9 +21,6 @@ Split.destroy_all
 puts "destroy users"
 User.destroy_all
 
-puts "destroy weekdays"
-Weekday.destroy_all
-
 puts "destroy comments"
 Comment.destroy_all
 
@@ -57,20 +54,12 @@ end
         })
 end 
 
+weekday = ["Moday", "Tuesday", "Wednesday"]
 
 puts "creates routines"
 10.times do 
-Routine.create(name: Faker::Sports::Football.player, user_id: User.all.sample.id)
+Routine.create(name: Faker::Sports::Football.player, user_id: User.all.sample.id, weekday: weekday.sample)
 end 
-
-puts "creates weekdays"
-Weekday.create(name: "Monday", routine_id: Routine.all.sample.id)
-Weekday.create(name: "Tuesday", routine_id: Routine.all.sample.id)
-Weekday.create(name: "Wednesday", routine_id: Routine.all.sample.id)
-Weekday.create(name: "Thursday", routine_id: Routine.all.sample.id)
-Weekday.create(name: "Friday", routine_id: Routine.all.sample.id)
-Weekday.create(name: "Saturday", routine_id: Routine.all.sample.id)
-Weekday.create(name: "Sunday", routine_id: Routine.all.sample.id)
 
 seconds = [30, 60, 90]
 

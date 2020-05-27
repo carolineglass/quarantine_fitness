@@ -7,6 +7,5 @@ class RoutinesController < ApplicationController
         @routine = Routine.find(params[:id])
     end
 
-    
-
 end
+
