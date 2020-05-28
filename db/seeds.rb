@@ -26,7 +26,7 @@ Comment.destroy_all
 
 puts "creates users"
 5.times do
-User.create(name: Faker::TvShows::Friends.unique.character)
+User.create(name: Faker::TvShows::Friends.unique.character, password: "password")
 end 
 
 puts "creates exercise"
@@ -54,7 +54,7 @@ end
         })
 end 
 
-weekday = ["Moday", "Tuesday", "Wednesday"]
+weekday = ["Moday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 puts "creates routines"
 10.times do 

@@ -4,9 +4,6 @@
 
     <%= f.label :weekday %>
     <%= f.collection_select :weekday, @weekdays, :to_s, :to_s, include_blank: false%>
-
-    <%= f.label :user_id%>
-    <%= f.collection_select :user_id, @users, :id, :name %>
     
     <%= f.submit %>
 <% end %>

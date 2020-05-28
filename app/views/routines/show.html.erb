@@ -1,17 +1,38 @@
 <h1><%= @routine.name %></h1>
 Created By: <%= @routine.user.name %>
 
+<% if @logged_in_user == @routine.user %>
 <p> Do on: <%= @routine.weekday %></p>
+<% end %>
 
 <ul>
+    <% @routine.splits.each do |split| %> 
     <% @routine.exercises.each do |exercise| %>
         <li><%= link_to exercise.name, exercise_path(exercise) %></li>
-            <!-- <% @routine.splits.each do |splits| %> 
-                <%= splits.duration %>
-            <% end %> -->
+        <%= split.duration %>
+        <% end %>
     <% end %>
 </ul>
 
 <p><%= link_to "Back to Routines", routines_path %></p>
-<p><%= link_to "Edit this Routine", edit_routine_path(@routine) %></p>
+
+<% if @logged_in_user == @routine.user %>
+<p><%= link_to "Edit Routine", edit_routine_path(@routine) %></p>
+<p><%= link_to "Add Exercises", new_split_path %></p>
+<%= button_to 'Delete Routine', routine_path(@routine), method: :delete %>
+<% end %>
+
+<% @routine.comments.each do |comment| %>
+    <p> <strong><%= comment.user.name %></strong> <%= comment.comment %></p>
+    <hr>
+<% end %>
+
+
+<%= form_for @comment do |f| %>
+<%= f.label :comment %>
+<%= f.text_field :comment %>
+
+<%= f.hidden_field :routine_id, value: @routine.id %>
+<%= f.submit %>
+<% end %>
 

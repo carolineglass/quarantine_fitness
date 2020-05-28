@@ -1,6 +1,7 @@
 class RoutinesController < ApplicationController
- before_action :find_routine, only: [:show, :edit, :update, :destroy]
- before_action :weekdays, only: [:new, :edit]
+    skip_before_action :authorized, only: [:index, :show]
+    before_action :find_routine, only: [:show, :edit, :update, :destroy]
+    before_action :weekdays, only: [:new, :edit]
     
     def index
         @routines = Routine.all
@@ -12,11 +13,10 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        @routine = Routine.create(routine_params)
-
-        if @routine.valid?
+        @logged_in_user.routines.create(routine_params)
+        # if @routine.valid?
             redirect_to new_split_path
-        end
+        # end
     end
     
     def edit
@@ -31,10 +31,12 @@ class RoutinesController < ApplicationController
 
     def show
          #@routine = Routine.find(params[:id])
+         @comment = Comment.new
     end
     
     def destroy
-    #only can destroy your own routine 
+        @routine.destroy
+        redirect_to routines_path
     end
 
     def about 
@@ -48,7 +50,7 @@ class RoutinesController < ApplicationController
     end
 
     def routine_params
-        params.require(:routine).permit(:name, :weekday, :user_id)
+        params.require(:routine).permit(:name, :weekday)
     end
 
     def weekdays

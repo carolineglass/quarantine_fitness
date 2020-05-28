@@ -17,10 +17,16 @@ li {
    
 
 <ul>
-  <li><%= link_to "Log in", new_login_path %></li>
-  <li><%= link_to "Sign up", new_user_path %></li>
-  <li><%= link_to "Exercise Library", exercises_path %></li>
-  <li><%= link_to "About", about_path %></li> 
+    <% if @logged_in_user %>
+        <li>Welcome, <%= @logged_in_user.name %></li>
+        <li><%= link_to "My Profile", user_path(@logged_in_user) %></li>
+        <li><%= link_to 'Log-out', logout_path, method: :delete %></li>
+    <% else %>
+        <li><%= link_to "Log in", new_login_path %></li>
+        <li><%= link_to "Sign up", new_user_path %></li>
+  <% end %>
+        <li><%= link_to "Exercise Library", exercises_path %></li>
+        <li><%= link_to "About", about_path %></li> 
 </ul>
 
     <h1>All Routines</h1>

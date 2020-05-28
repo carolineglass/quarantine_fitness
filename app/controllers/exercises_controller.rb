@@ -1,4 +1,6 @@
 class ExercisesController < ApplicationController
+    skip_before_action :authorized, only: [:index, :show]
+
     def index
         @exercises = Exercise.all
     end
