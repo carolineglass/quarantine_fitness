@@ -1,7 +1,36 @@
-<h1>All Routines</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+</style>
+</head>
+<body>
+   
 
 <ul>
-<% @routines.each do |routine| %>
-<li><%= link_to routine.name, routine_path(routine) %></li>
-<% end %>
+  <li><%= link_to "Log in", new_login_path %></li>
+  <li><%= link_to "Sign up", new_user_path %></li>
+  <li><%= link_to "Exercise Library", exercises_path %></li>
+  <li><%= link_to "About", about_path %></li> 
 </ul>
+
+    <h1>All Routines</h1>
+<ul>
+    <% @routines.each do |routine| %>
+        <li><%= link_to routine.name, routine_path(routine) %></li>
+        <p>Created By: <%= routine.user.name %></p>
+    <% end %>
+</ul> 
+
+
+</body>
+</html>

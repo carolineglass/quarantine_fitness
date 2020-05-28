@@ -34,8 +34,12 @@ class RoutinesController < ApplicationController
     end
     
     def destroy
-    
+    #only can destroy your own routine 
     end
+
+    def about 
+        render :about
+    end 
 
     private
 

@@ -1,0 +1,13 @@
+<h1>Hello, <%= @user.name %></h1>
+
+<% if @user.routines.any? %>
+<p>Here are your routines:</p>
+    <% @user.routines.each do |routine| %>
+    <%= routine.weekday %> | <%= link_to routine.name, routine_path(routine) %> <br><br>
+    <% end %>
+    <p> <%= link_to 'Create a New Routine', new_routine_path %></p>
+<% else %>
+    <p> <%= link_to 'Create a New Routine', new_routine_path %></p>
+<% end %>
+
+<%= link_to 'logout', logout_path, method: :delete %>

@@ -1,7 +1,7 @@
 class SplitsController < ApplicationController
     def new
         @split = Split.new
-        @routines = Routine.all
+        @routines = Routine.where({:user_id => @logged_in_user.id})
         @exercises = Exercise.all
     end
 
@@ -12,7 +12,7 @@ class SplitsController < ApplicationController
 
     def edit
         @split = Split.find(params[:id])
-        @routines = Routine.all
+        @routines = Routine.where({:user_id => @logged_in_user.id})
         @exercises = Exercise.all
     end
 

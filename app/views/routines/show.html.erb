@@ -1,12 +1,17 @@
 <h1><%= @routine.name %></h1>
+Created By: <%= @routine.user.name %>
+
 <p> Do on: <%= @routine.weekday %></p>
 
 <ul>
     <% @routine.exercises.each do |exercise| %>
-    <li><%= link_to exercise.name, exercise_path(exercise) %></li>
+        <li><%= link_to exercise.name, exercise_path(exercise) %></li>
+            <!-- <% @routine.splits.each do |splits| %> 
+                <%= splits.duration %>
+            <% end %> -->
     <% end %>
 </ul>
 
 <p><%= link_to "Back to Routines", routines_path %></p>
 <p><%= link_to "Edit this Routine", edit_routine_path(@routine) %></p>
-<!-- <p><%= link_to "Add Exercises", edit_routine_split_path(@routine.splits.id) %></p> -->
+

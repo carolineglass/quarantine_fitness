@@ -5,7 +5,7 @@
     <%= f.label :exercise_id %>
     <%= f.collection_select :exercise_id, @exercises, :id, :name %>
 
-    <%= f.label :duration, "duration in seconds"%>
+    <%= f.label :duration, "Seconds"%>
     <%= f.number_field :duration %>
     
     <%= f.submit "Add Exercise" %>
