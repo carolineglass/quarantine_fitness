@@ -6,28 +6,44 @@ Created By: <%= @routine.user.name %>
 <% end %>
 
 <ul>
-    <% @routine.splits.each do |split| %> 
+   
     <% @routine.exercises.each do |exercise| %>
         <li><%= link_to exercise.name, exercise_path(exercise) %></li>
+            <!-- <% @routine.splits.each do |split| %> 
         <%= split.duration %>
-        <% end %>
+        <% end %> -->
     <% end %>
 </ul>
+<% if @logged_in_user == @routine.user %>
+<%= form_for @split do |f| %>
+    <%= f.hidden_field :routine_id, value: @routine.id %>   
 
-<p><%= link_to "Back to Routines", routines_path %></p>
+    <%= f.label :exercise_id %>
+    <%= f.collection_select :exercise_id, @exercises, :id, :name %>
+
+    <%= f.label :duration, "Seconds"%>
+    <%= f.number_field :duration %>
+    
+    <%= f.submit "Add Exercise" %>
+<% end %>
+<% end %>
 
 <% if @logged_in_user == @routine.user %>
-<p><%= link_to "Edit Routine", edit_routine_path(@routine) %></p>
-<p><%= link_to "Add Exercises", new_split_path %></p>
+<p><%= button_to "Edit Routine", edit_routine_path(@routine) %></p>
+<!-- <p><%= link_to "Add Exercises", new_split_path %></p> -->
 <%= button_to 'Delete Routine', routine_path(@routine), method: :delete %>
 <% end %>
 
+<p><%= link_to "Back to Routines", routines_path %></p>
+
+<h2>Comments:</h2>
 <% @routine.comments.each do |comment| %>
     <p> <strong><%= comment.user.name %></strong> <%= comment.comment %></p>
     <hr>
 <% end %>
 
-
+<% if @logged_in_user %>
+<h2>Add Comment:</h2>
 <%= form_for @comment do |f| %>
 <%= f.label :comment %>
 <%= f.text_field :comment %>
@@ -35,4 +51,4 @@ Created By: <%= @routine.user.name %>
 <%= f.hidden_field :routine_id, value: @routine.id %>
 <%= f.submit %>
 <% end %>
-
+<% end %>

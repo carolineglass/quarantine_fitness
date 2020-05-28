@@ -7,5 +7,10 @@ class ExercisesController < ApplicationController
 
     def show
         @exercise = Exercise.find(params[:id])
+        if @logged_in_user
+            @routines = Routine.where({:user_id => @logged_in_user.id})
+        end
+        @split = Split.new
     end
+
 end

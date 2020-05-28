@@ -13,9 +13,9 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        @logged_in_user.routines.create(routine_params)
+        @new_routine = @logged_in_user.routines.create(routine_params)
         # if @routine.valid?
-            redirect_to new_split_path
+        redirect_to routine_path(@new_routine)
         # end
     end
     
@@ -32,6 +32,9 @@ class RoutinesController < ApplicationController
     def show
          #@routine = Routine.find(params[:id])
          @comment = Comment.new
+         #for the add exercise (split) form
+         @split = Split.new
+         @exercises = Exercise.all
     end
     
     def destroy
