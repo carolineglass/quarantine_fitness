@@ -1,46 +1,47 @@
 <h1><%= @routine.name %></h1>
-Created By: <%= @routine.user.name %>
-
+<strong>Created by:</strong> <%= @routine.user.name %>
 <% if @logged_in_user == @routine.user %>
-<p> Do on: <%= @routine.weekday %></p>
+<p><strong>When: </strong><%= @routine.weekday %></p>
 <% end %>
+<hr>
 
-<ul>
-   
-    <% @routine.exercises.each do |exercise| %>
-        <li><%= link_to exercise.name, exercise_path(exercise) %></li>
-            <!-- <% @routine.splits.each do |split| %> 
-        <%= split.duration %>
-        <% end %> -->
+    <% @routine.splits.each do |split| %>
+       <p><%= link_to split.exercise.name, exercise_path(split.exercise.id) %> |
+        <%= split.duration %> seconds</p> 
+            <% if @logged_in_user == @routine.user %>
+                <%=button_to "Delete", split_path(split), method: :delete %>
+            <% end %>
     <% end %>
-</ul>
+
 <% if @logged_in_user == @routine.user %>
-<%= form_for @split do |f| %>
-    <%= f.hidden_field :routine_id, value: @routine.id %>   
+<hr>
+    <%= form_for @split do |f| %>
+        <%= f.hidden_field :routine_id, value: @routine.id %>   
 
-    <%= f.label :exercise_id %>
-    <%= f.collection_select :exercise_id, @exercises, :id, :name %>
+        <%= f.label :exercise_id %>
+        <%= f.collection_select :exercise_id, @exercises, :id, :name %>
 
-    <%= f.label :duration, "Seconds"%>
-    <%= f.number_field :duration %>
+        <%= f.label :duration, "Seconds"%>
+        <%= f.number_field :duration %>
     
-    <%= f.submit "Add Exercise" %>
-<% end %>
+        <%= f.submit "Add Exercise" %>
+    <% end %>
+
+    <p><%= button_to "Edit Routine", edit_routine_path(@routine), method: :get %></p>
+    <%= button_to 'Delete Routine', routine_path(@routine), method: :delete %>
 <% end %>
 
-<% if @logged_in_user == @routine.user %>
-<p><%= button_to "Edit Routine", edit_routine_path(@routine) %></p>
-<!-- <p><%= link_to "Add Exercises", new_split_path %></p> -->
-<%= button_to 'Delete Routine', routine_path(@routine), method: :delete %>
-<% end %>
-
-<p><%= link_to "Back to Routines", routines_path %></p>
+<hr>
 
 <h2>Comments:</h2>
 <% @routine.comments.each do |comment| %>
     <p> <strong><%= comment.user.name %></strong> <%= comment.comment %></p>
-    <hr>
+    <% if @logged_in_user == comment.user %>
+    <%= button_to 'Delete Comment', comment_path(comment), method: :delete %>
+    <% end %>
 <% end %>
+
+<hr>
 
 <% if @logged_in_user %>
 <h2>Add Comment:</h2>
@@ -52,3 +53,5 @@ Created By: <%= @routine.user.name %>
 <%= f.submit %>
 <% end %>
 <% end %>
+
+<p><%= link_to "Back to Routines", routines_path %></p>

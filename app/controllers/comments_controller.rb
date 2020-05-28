@@ -4,6 +4,12 @@ class CommentsController < ApplicationController
         redirect_to routine_path(comment_params[:routine_id])
     end
 
+    def destroy
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        redirect_to routine_path(@comment.routine)
+    end
+
     private 
 
     def comment_params

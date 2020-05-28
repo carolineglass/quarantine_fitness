@@ -9,8 +9,8 @@ class ExercisesController < ApplicationController
         @exercise = Exercise.find(params[:id])
         if @logged_in_user
             @routines = Routine.where({:user_id => @logged_in_user.id})
+            @split = Split.new
         end
-        @split = Split.new
     end
 
 end
