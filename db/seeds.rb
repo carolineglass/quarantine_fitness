@@ -24,10 +24,16 @@ User.destroy_all
 puts "destroy comments"
 Comment.destroy_all
 
-puts "creates users"
-5.times do
-User.create(name: Faker::TvShows::Friends.unique.character, password: "password")
-end 
+# puts "creates users"
+# 5.times do
+# User.create(name: Faker::TvShows::Friends.unique.character, password: "password")
+# end 
+
+User.create(name: "Brandon1234", password: "password")
+User.create(name: "Caroline1234", password: "password")
+User.create(name: "Rosie1234", password: "password")
+User.create(name: "Jallen1234", password: "password")
+User.create(name: "Greg1234", password: "password")
 
 exercise_gifs = [
     "https://media.self.com/photos/59c81783bdd6c02d85791296/master/w_1600%2Cc_limit/Fitness_08.gif",
@@ -103,10 +109,21 @@ i = 0
 
 weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-puts "creates routines"
-10.times do 
-Routine.create(name: Faker::Sports::Football.player, user_id: User.all.sample.id, weekday: weekday.sample)
-end 
+# puts "creates routines"
+# 10.times do 
+# Routine.create(name: Faker::Sports::Football.player, user_id: User.all.sample.id, weekday: weekday.sample)
+# end 
+
+Routine.create(name: "Chest Day", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Back Day", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Leg Day", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Shoulder Day", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Arm Day", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Stretch and Acessories", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Cardio and Legs", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Burn Outs", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Core Strength and Cardio", user_id: User.all.sample.id, weekday: weekday.sample)
+Routine.create(name: "Stretch and Legs", user_id: User.all.sample.id, weekday: weekday.sample)
 
 seconds = [30, 60, 90]
 
