@@ -94,12 +94,12 @@ Scraper.workout_info.each do |workout_hash|
     }) 
 end
 
+i = 0
+    Exercise.all.each do |exercise|
+        exercise.update(img_url: exercise_gifs[i])
+        i += 1
+    end 
 
-# exercise_gifs.each do |workout_img|
-#     Exercise.all.each do |exercise|
-#         exercise.update(img_url: workout_img)
-#     end 
-# end
 
 weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
