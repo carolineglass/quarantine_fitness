@@ -1,9 +1,9 @@
 <%= render 'nav' %>
 
-<h1><%= @routine.name %></h1>
-<strong>Created by:</strong> <%= @routine.user.name %>
+<h1 class="title"><%= @routine.name %></h1>
+<h4 class="center"><strong>Created by:</strong> <%= @routine.user.name %></h4>
 <% if @logged_in_user == @routine.user %>
-<p><strong>When: </strong><%= @routine.weekday %></p>
+<h4 class="center"> <strong>When: </strong><%= @routine.weekday %></h4>
 <% end %>
 <hr>
 

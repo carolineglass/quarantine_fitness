@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-    skip_before_action :authorized, only: [:index, :show]
+    skip_before_action :authorized, only: [:index, :show, :about]
     before_action :find_routine, only: [:show, :edit, :update, :destroy]
     before_action :weekdays, only: [:new, :edit]
     

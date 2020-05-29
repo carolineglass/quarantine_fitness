@@ -1,6 +1,7 @@
 <%= render 'nav' %>
-<h1>Create an Account</h1>
+<h1 class="title">Create an Account</h1>
 
+<h4 class="center">
 <%= form_for @user do |f| %>
   <%= f.label :name, "Username" %>
   <%= f.text_field :name %>
@@ -10,5 +11,5 @@
 
   <%= f.submit %>
 <% end %>
+</h4>
 
-<br><%= button_to "Back", routines_path %>

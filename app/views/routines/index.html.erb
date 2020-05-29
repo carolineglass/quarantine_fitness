@@ -1,13 +1,13 @@
 <%= render 'nav' %>
 
-    <h1>All Routines</h1>
+    <h1 class="title">All Routines</h1>
 
 <div class="routines-container">
     
         <% @routines.each do |routine| %>
         <div class="routines-tile"> 
-            <p><%= link_to routine.name, routine_path(routine) %>
-            Created By: <%= routine.user.name %></p>
+            <p class="center"><%= link_to routine.name, routine_path(routine) %></p>
+            <p class="center"> Created by: <strong><%= routine.user.name %></p> </strong>
         </div>
         <% end %>
 </div>

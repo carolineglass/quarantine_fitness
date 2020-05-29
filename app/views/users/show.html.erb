@@ -1,6 +1,7 @@
 <%= render 'nav' %>
-<h1>Hello, <%= @user.name %></h1>
+<h1 class="title">Hello, <%= @user.name %></h1>
 
+<h4 class="center">
 <% if @user.routines.any? %>
 <p>Here are your routines:</p>
     <% @user.routines.each do |routine| %>
@@ -11,5 +12,4 @@
     <p>You have no routines yet!</p>
     <%= link_to 'Create a New Routine', new_routine_path %>
 <% end %>
-
-<p><%= link_to 'All Routines', routines_path%></p>
+</h4>

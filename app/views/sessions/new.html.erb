@@ -1,3 +1,4 @@
+<h1 class="web_name">Quarantine Fitness</h1>
 <ul class='nav'>
   <% if @logged_in_user %>
     <p class="welcome_name">Welcome, <%= @logged_in_user.name %></p> 
@@ -15,11 +16,12 @@
 <% end %>
 </ul>
 
-<h1>Log in</h1>
+<h1 class="title">Log in</h1>
 <% if flash[:errors] %>
-<p> <%= flash[:errors] %></p>
+<p class="center"> <%= flash[:errors] %></p>
 <% end %>
 
+<h4 class="center">
 <%= form_for :session, url: login_path do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
@@ -30,4 +32,4 @@
 <%= f.submit 'Log in' %>
 <% end %>
 
-<br><%= button_to "Back", routines_path %>
+</h4>
