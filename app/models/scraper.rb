@@ -24,4 +24,3 @@ end
 
 end
 
-["https://media.self.com/photos/59c81783bdd6c02d85791296/master/w_1600%2Cc_limit/Fitness_08.gif", ]

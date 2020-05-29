@@ -1,11 +1,9 @@
 <%= render 'nav' %>
 
-<h1><%= @exercise.name %></h1>
+<h1 class="exercise"><%= @exercise.name %></h1>
 <img src="<%= @exercise.img_url %>">
 
 <h2>Directions:</h2> <%= @exercise.directions %>
-
-
 
 <hr>
 <% if @logged_in_user %>

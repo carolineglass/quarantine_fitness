@@ -1,6 +1,6 @@
 <ul class='nav'>
     <% if @logged_in_user %>
-        Welcome, <%= @logged_in_user.name %>
+        <p class="welcome_name">Welcome, <%= @logged_in_user.name %></p> 
         <li><%= link_to "My Profile", user_path(@logged_in_user) %></li>
         <li><%= link_to "All Routines", routines_path %></li>
         <li><%= link_to "Exercise Library", exercises_path %></li>
