@@ -9,6 +9,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
+
 puts "destroy exercises"
 Exercise.destroy_all
 
@@ -29,30 +31,16 @@ puts "creates users"
 User.create(name: Faker::TvShows::Friends.unique.character, password: "password")
 end 
 
-puts "creates exercise"
-10.times do
-Exercise.create({
-    name: Faker::Dessert.unique.variety,
-    directions: Faker::TvShows::MichaelScott.quote, 
-    img_url: nil
+Scraper.workout_info.each do |workout_hash|
+    Exercise.create({
+        name: workout_hash[:name],
+        directions: workout_hash[:description],
+        img_url: ""
     })
-end 
+end
 
-10.times do
-    Exercise.create({
-        name: Faker::Dessert.unique.topping,
-        directions: Faker::TvShows::MichaelScott.quote, 
-        img_url: nil
-        })
-end 
+exercise_gif = ["https://media.self.com/photos/59c81783bdd6c02d85791296/master/w_1600%2Cc_limit/Fitness_08.gif","https://media.self.com/photos/57ee8dbb3429de5367e0b6cf/master/w_1600%2Cc_limit/REVERSE_LUNGE.gif"]
 
-10.times do
-    Exercise.create({
-        name: Faker::Dessert.unique.flavor,
-        directions: Faker::TvShows::MichaelScott.quote, 
-        img_url: nil
-        })
-end 
 
 weekday = ["Moday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 

@@ -1,3 +1,5 @@
+<%= render 'nav' %>
+
 <h1><%= @routine.name %></h1>
 <strong>Created by:</strong> <%= @routine.user.name %>
 <% if @logged_in_user == @routine.user %>
@@ -53,5 +55,3 @@
 <%= f.submit %>
 <% end %>
 <% end %>
-
-<p><%= link_to "Back to Routines", routines_path %></p>

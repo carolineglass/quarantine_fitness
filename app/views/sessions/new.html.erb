@@ -1,4 +1,21 @@
-  <h1>Log in</h1>
+<ul class='nav'>
+  <% if @logged_in_user %>
+      Welcome, <%= @logged_in_user.name %>
+      <li><%= link_to "My Profile", user_path(@logged_in_user) %></li>
+      <li><%= link_to "All Routines", routines_path %></li>
+      <li><%= link_to "Exercise Library", exercises_path %></li>
+      <li><%= link_to "About", about_path %></li> 
+      <li><%= link_to 'Log-out', logout_path, method: :delete %></li>
+  <% else %>
+      <li><%= link_to "Log in", new_login_path %></li>
+      <li><%= link_to "Sign up", new_user_path %></li>
+      <li><%= link_to "All Routines", routines_path %></li>
+      <li><%= link_to "Exercise Library", exercises_path %></li>
+      <li><%= link_to "About", about_path %></li> 
+<% end %>
+</ul>
+
+<h1>Log in</h1>
 <% if flash[:errors] %>
 <p> <%= flash[:errors] %></p>
 <% end %>

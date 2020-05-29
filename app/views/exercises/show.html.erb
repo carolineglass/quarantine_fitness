@@ -1,10 +1,12 @@
-
+<%= render 'nav' %>
 
 <h1><%= @exercise.name %></h1>
+<img src="<%= @exercise.img_url %>">
 
 <h2>Directions:</h2> <%= @exercise.directions %>
 
-<!-- <img src="<%= @exercise.img_url %>" alt=""> -->
+
+
 <hr>
 <% if @logged_in_user %>
 <h4>Add this Exercise to a Routine</h4>

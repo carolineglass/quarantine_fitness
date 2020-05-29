@@ -33,7 +33,8 @@
  }
 
  ul.nav li:hover {
-     background-color: lightskyblue;
+     background-color: palegreen;
+     border-radius: 30px;
  }
 
  .routines-container {
