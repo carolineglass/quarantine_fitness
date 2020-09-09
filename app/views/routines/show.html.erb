@@ -1,12 +1,19 @@
 <%= render 'nav' %>
 
 <h1 class="title"><%= @routine.name %></h1>
-<h4 class="center"><strong>Created by:</strong> <%= @routine.user.name %></h4>
-<% if @logged_in_user == @routine.user %>
-<h4 class="center"> <strong>When: </strong><%= @routine.weekday %></h4>
-<% end %>
-<hr>
 
+<h4 class="center"><strong>Created by:</strong> <%= @routine.user.name %></h4>
+
+<% if @logged_in_user == @routine.user %>
+<h4 class="center"><%= @routine.weekday %></h4>
+<div class="center">
+    <p><%= button_to "Edit Routine", edit_routine_path(@routine), method: :get %></p>
+    <%= button_to 'Delete Routine', routine_path(@routine), method: :delete %>
+    </div>
+<% end %>
+
+<hr>
+<div class="center">
     <% @routine.splits.each do |split| %>
        <p><%= link_to split.exercise.name, exercise_path(split.exercise.id) %> |
         <%= split.duration %> seconds</p> 
@@ -14,9 +21,13 @@
                 <%=button_to "Delete", split_path(split), method: :delete %>
             <% end %>
     <% end %>
+</div>
 
 <% if @logged_in_user == @routine.user %>
+
 <hr>
+<div class="add-to-routine">
+<h3>Add exercises to <%= @routine.name %></h3>
     <%= form_for @split do |f| %>
         <%= f.hidden_field :routine_id, value: @routine.id %>   
 
@@ -28,12 +39,11 @@
     
         <%= f.submit "Add Exercise" %>
     <% end %>
+</div>
 
-    <p><%= button_to "Edit Routine", edit_routine_path(@routine), method: :get %></p>
-    <%= button_to 'Delete Routine', routine_path(@routine), method: :delete %>
+    <!-- <p><%= button_to "Edit Routine", edit_routine_path(@routine), method: :get %></p>
+    <%= button_to 'Delete Routine', routine_path(@routine), method: :delete %> -->
 <% end %>
-
-<hr>
 
 <h2>Comments:</h2>
 <% @routine.comments.each do |comment| %>
@@ -43,7 +53,6 @@
     <% end %>
 <% end %>
 
-<hr>
 
 <% if @logged_in_user %>
 <h2>Add Comment:</h2>
