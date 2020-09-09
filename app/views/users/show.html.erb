@@ -7,9 +7,9 @@
     <% @user.routines.each do |routine| %>
     <%= routine.weekday %> | <%= link_to routine.name, routine_path(routine) %> <br><br>
     <% end %>
-    <%= link_to 'Create a New Routine', new_routine_path %>
+    <%= link_to 'Create a New Routine', new_routine_path, class: "btn"%>
 <% else %>
     <p>You have no routines yet!</p>
-    <%= link_to 'Create a New Routine', new_routine_path %>
+    <%= link_to 'Create a New Routine', new_routine_path, class: "btn" %>
 <% end %>
 </h4>

@@ -1,27 +1,30 @@
 <%= render 'nav' %>
 
 <h1 class="title"><%= @exercise.name %></h1>
-<img src="<%= @exercise.img_url %>">
+<img class="exercise-img" src="<%= @exercise.img_url %>">
 
 <div class="directions-div">
 <p class="show-directions"><%= @exercise.directions %></p>
 </div>
 
 <hr>
+
 <% if @logged_in_user %>
-<h4>Add this Exercise to a Routine</h4>
-<%= form_for @split do |f| %>
-    <%= f.label :routines_id %>
-    <%= f.collection_select :routine_id, @routines, :id, :name %> 
+<div class="add-exercise">
+    <h4>Add this Exercise to a Routine</h4>
+    <%= form_for @split do |f| %>
+        <%= f.label :routines_id %>
+        <%= f.collection_select :routine_id, @routines, :id, :name %> 
 
-    <%= f.hidden_field :exercise_id, value: @exercise.id %> 
+        <%= f.hidden_field :exercise_id, value: @exercise.id %> 
 
-    <%= f.label :duration, "Seconds"%>
-    <%= f.number_field :duration %>
-    
-    <%= f.submit "Add Exercise"%>
-<% end %>
-<% end %>
+        <%= f.label :duration, "Seconds"%>
+        <%= f.number_field :duration %>
+        
+        <%= f.submit "Add Exercise"%>
+    <% end %>
+</div>
+    <% end %>
 
 <p><%= link_to "Back to Exercises", exercises_path %></p>
 

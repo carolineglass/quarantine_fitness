@@ -10,9 +10,11 @@
  }
 
  .welcome_name {
-    font-weight: bold;
+    /* font-weight: bold; */
     display: inline;
     font-size: 20px;
+    color: lightsalmon;
+    padding-right: 30px;
  }
 
  ul.nav li {
@@ -38,10 +40,12 @@ ul.nav li a {
  }
 
  .routines-tile {
-    background-color: cornsilk;
+    background-color: rgba(85, 208, 230, 0.262);
     margin: 30px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
+    border: solid 2px lightsalmon;
+    box-shadow: 3px 3px lightsalmon;
  }
 
  body {
@@ -103,10 +107,32 @@ ul.nav li a {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0px 100px;
+    padding: 0px 300px;
 }
 
 .show-directions {
     font-family: 'Open Sans', sans-serif;
+}
 
+.add-exercise {
+    text-align: center;
+}
+
+.exercise-img {
+    /* border: solid 5px; */
+    box-shadow: 
+	0 0 0 2px #000,
+	0 0 0 3px #999,
+	0 0 0 9px lightsalmon,
+	0 0 0 10px #666,
+	0 0 0 16px #fd0,
+	0 0 0 18px #000;
+}
+
+.btn {
+    font-size: 20px;
+    border: solid 2px;
+    border-radius: 10px;
+    margin: 40px;
+    background-color: rgba(100, 148, 237, 0.481);
 }
