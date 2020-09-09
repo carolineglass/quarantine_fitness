@@ -3,7 +3,9 @@
 <h1 class="title"><%= @exercise.name %></h1>
 <img src="<%= @exercise.img_url %>">
 
-<h2>Directions:</h2> <%= @exercise.directions %>
+<div class="directions-div">
+<p class="show-directions"><%= @exercise.directions %></p>
+</div>
 
 <hr>
 <% if @logged_in_user %>

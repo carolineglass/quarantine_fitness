@@ -95,10 +95,11 @@ exercise_gifs = [
 Scraper.workout_info.each do |workout_hash|
     Exercise.create({
         name: workout_hash[:name],
-        directions: workout_hash[:description],
+        directions: workout_hash[:description]
         img_url: ""
     }) 
 end
+
 
 i = 0
     Exercise.all.each do |exercise|

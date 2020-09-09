@@ -4,5 +4,4 @@ class User < ApplicationRecord
     has_many :splits, through: :routines
 
     has_secure_password
-    
 end
