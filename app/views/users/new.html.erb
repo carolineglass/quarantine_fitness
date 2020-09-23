@@ -4,7 +4,7 @@
 <h4 class="center">
 <%= form_for @user do |f| %>
   <%= f.label :name, "Username" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, autocomplete: 'off' %>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
